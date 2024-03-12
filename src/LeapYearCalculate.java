@@ -9,15 +9,24 @@ public class LeapYearCalculate {
         } else return year % 400 == 0;
     }
     public static void main(String[] args) {
-        System.out.print("Enter a year: ");
+//        System.out.print("Enter year interval: ");
         Scanner scanner = new Scanner(System.in);
-        int year = scanner.nextInt();
+        String input = scanner.nextLine();
+        String[] nums = input.split(" ");
+        int yearLeast = Integer.parseInt(nums[0]);
+        int yearMost = Integer.parseInt(nums[1]);
         scanner.close();
+
 //        int year = 2020;
-        if (isLeapYear(year)) {
-            System.out.println(year + " is a leap year.");
-        } else {
-            System.out.println(year + " is not a leap year.");
+        int count = 0;
+        for (int year = yearLeast; year <= yearMost; year++) {
+            if (isLeapYear(year)) {
+                System.out.print(year + " ");
+                count ++;
+                if (count % 4 == 0) {
+                    System.out.println();
+            }
         }
     }
+}
 }

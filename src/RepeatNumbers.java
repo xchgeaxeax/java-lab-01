@@ -1,26 +1,21 @@
 import java.util.Scanner;
 public class RepeatNumbers {
-    public static void main(String[] args){
-        System.out.println("Enter repeat times, must more than 0 and less than 10");
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        String[] nums = input.split(" ");
-        int repeat = Integer.parseInt(nums[0]);
-        long a = Integer.parseInt(nums[1]);
-        long n = Integer.parseInt(nums[2]);
+        int repeat = sc.nextInt();
+        for (int i = 0; i < repeat; i++){
+            long a = sc.nextLong();
+            long n = sc.nextLong();
+            long result1 = repeatNumbers(a, n);
+            System.out.println(result1);
+        }
         sc.close();
-// check repeat is valid or not
-        if(repeat <= 0 || repeat >= 10){
-            System.out.println("Invalid repeat times");
-            return;
+    }
+    public static long repeatNumbers (long a,long n){
+        long result = 0;
+        for (int i = 1; i <= n; i++) {
+            result += (long) (a * i * Math.pow(10, n - i));
         }
-
-        long tmp = 0;
-        for(int i = 1; i <= n; i++){
-            tmp += (long) (a * i * Math.pow(10, n - i));
-        }
-         long result = repeat * tmp;
-
-        System.out.println(result);
+        return result;
     }
 }
